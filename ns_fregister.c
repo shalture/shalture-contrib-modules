@@ -10,6 +10,7 @@
  */
 
 #include "atheme-compat.h"
+#include "phandler.h"
 
 DECLARE_MODULE_V1
 (
@@ -75,7 +76,7 @@ static void ns_cmd_fregister(sourceinfo_t *si, int parc, char *parv[])
 		return;
 	}
 
-	if (strchr(account, ' ') || strchr(account, '\n') || strchr(account, '\r') || account[0] == '=' || account[0] == '#' || account[0] == '@' || account[0] == '+' || account[0] == '%' || account[0] == '!' || strchr(account, ','))
+	if (!is_valid_nick(account))
 	{
 		command_fail(si, fault_badparams, "The account name \2%s\2 is invalid.", account);
 		return;
