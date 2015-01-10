@@ -34,12 +34,6 @@ static void ns_cmd_listlogins(sourceinfo_t *si, int parc, char *parv[])
 	mowgli_node_t *n;
 	int matches = 0;
 
-	if (si->smu->flags & MU_WAITAUTH)
-	{
-		command_fail(si, fault_noprivs, _("You have to verify your email address before you can perform this operation."));
-		return;
-	}
-
 	command_success_nodata(si, "Clients identified to account \2%s\2", entity(si->smu)->name);
 	MOWGLI_ITER_FOREACH(n, si->smu->logins.head)
 	{
