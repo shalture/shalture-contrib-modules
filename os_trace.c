@@ -703,7 +703,7 @@ static void trace_akill_exec(user_t *u, trace_action_t *act)
 		return;
 
 	act->matched = true;
-	kline_add(kuser, khost, a->reason, a->duration, get_storage_oper_name(act->si));
+	kline_add(kuser, khost, a->reason, a->duration, get_storage_oper_name(act->si), KLINE_MASS);
 	command_success_nodata(act->si, _("\2%s\2 has been akilled."), u->nick);
 }
 
